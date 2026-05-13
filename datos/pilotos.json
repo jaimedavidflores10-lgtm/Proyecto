@@ -1,0 +1,177 @@
+[
+    {
+        "nombre": "Takumi",
+        "edad": 18,
+        "cedula": "123456",
+        "equipo": "Speed Stars",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.53
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.77
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.26
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.64
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.06
+            }
+        ]
+    },
+    {
+        "nombre": "Ryosuke",
+        "edad": 22,
+        "cedula": "789012",
+        "equipo": "Mountain Racers",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.73
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.55
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.49
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.52
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.71
+            }
+        ]
+    },
+    {
+        "nombre": "Diomedes Diaz",
+        "edad": 30,
+        "cedula": "345678",
+        "equipo": "Speed Stars",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.06
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.87
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.68
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.15
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.14
+            }
+        ]
+    },
+    {
+        "nombre": "Silvestre Dangond",
+        "edad": 28,
+        "cedula": "901234",
+        "equipo": "Mountain Racers",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.85
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.87
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.28
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.27
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.19
+            }
+        ]
+    },
+    {
+        "nombre": "Martin Elias",
+        "edad": 26,
+        "cedula": "567890",
+        "equipo": "Speed Stars",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.09
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.8
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.83
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.32
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.02
+            }
+        ]
+    },
+    {
+        "nombre": "Poncho Zuleta",
+        "edad": 35,
+        "cedula": "123456",
+        "equipo": "Mountain Racers",
+        "registros": [
+            {
+                "circuito": "Akina",
+                "tiempo": 4.33
+            },
+            {
+                "circuito": "Akagi",
+                "tiempo": 4.67
+            },
+            {
+                "circuito": "Myogi",
+                "tiempo": 4.2
+            },
+            {
+                "circuito": "Irohazaka",
+                "tiempo": 4.36
+            },
+            {
+                "circuito": "Paluato",
+                "tiempo": 4.03
+            }
+        ]
+    },
+    {
+        "nombre": "Juan",
+        "edad": 18,
+        "cedula": "1145269898",
+        "equipo": "Speed Stars",
+        "registros": []
+    }
+]

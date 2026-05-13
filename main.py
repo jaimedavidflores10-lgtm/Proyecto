@@ -1,0 +1,151 @@
+
+from Sistema import Sistema
+from Usuario import Usuario, Admin
+from Datos_Json import GestorJSON
+
+
+sistema = Sistema()
+gestor = GestorJSON("datos")  # Crear gestor JSON
+
+# Si ya existen archivos JSON, cargar su contenido en memoria al iniciar.
+try:
+    sistema.cargar_desde_json(gestor)
+except Exception as e:
+    print(f"No fue posible cargar los datos desde JSON al iniciar: {e}")
+
+
+
+def iniciar_sesion():
+    for intento in range(3):
+        print("\n--- INICIO DE SESIÓN ---")
+        print("1. Admin")
+        print("2. Usuario")
+        inicio = input("Seleccione: ")
+        if inicio == "1":
+            nombre_admin = input("Nombre de admin: ")
+            contrasena = input("Contraseña de admin: ")
+            if contrasena == "admin":
+                print("Sesión iniciada como admin.")
+                admin = Admin(nombre_admin, "total")
+                admin.saludar()
+                return 'admin'
+            else:
+                print("Contraseña incorrecta.")
+        elif inicio == "2":
+            nombre_usuario = input("Nombre de usuario: ")
+            print("Sesión iniciada como usuario.")
+            usuario = Usuario(nombre_usuario)
+            usuario.saludar()
+            return 'usuario'
+        else:
+            print("Opción inválida.")
+    print("Demasiados intentos. Saliendo...")
+    exit()
+
+
+rol = iniciar_sesion()
+
+while True:
+    print("\n--- MENU ---")
+    print("1. Mostrar pilotos")
+    print("2. Buscar piloto")
+    print("3. Mostrar circuitos")
+    print("4. Agregar piloto")
+    print("5. Mejor piloto")
+    print("6. Mostrar equipos")
+    print("7. Registrar tiempo Nuevo (Carrera)")
+    print("8. Modificar tiempo existente")
+    print("9. Guardar datos en JSON")
+    print("10. Cargar datos desde JSON")
+    print("11. Ver archivos JSON")
+    print("12. Salir")
+
+    op = input("Seleccione: ")
+
+    if op == "1":
+        sistema.mostrar_pilotos()
+    elif op == "2":
+        nombre = input("Nombre: ")
+        sistema.buscar_piloto(nombre)
+    elif op == "3":
+        sistema.mostrar_circuitos()
+    elif op == "4":
+        if rol != 'admin':
+            print("[!] No autorizado: se requiere cuenta admin para esta acción.")
+            continue
+        nombre = input("Nombre: ")
+        cedula = input("Cédula: ")
+        edad = int(input("Edad: Mayor o igual a 18: "))
+        print("Equipos disponibles: Speed Stars, Mountain Racers")
+        nombre_equipo = input("Equipo: ")
+        sistema.agregar_piloto(nombre, edad, cedula, nombre_equipo)
+    elif op == "5":
+        sistema.mejor_piloto()
+    elif op == "6":
+        sistema.mostrar_equipos()
+    elif op == "7":
+        if rol != 'admin':
+            print("[!] No autorizado: se requiere cuenta admin para esta acción.")
+            continue
+        nombre_piloto = input("Nombre del piloto: ")
+        nombre_circuito = input("Nombre del circuito(Akina, Akagi, Myogi, Irohazaka, Paluato): ")
+        try:
+            nuevo_tiempo = float(input("Nuevo tiempo: "))
+            sistema.registrar_nuevo_tiempo(nombre_piloto, nombre_circuito, nuevo_tiempo)
+        except ValueError:
+            print("Tiempo inválido. Debe ser un número(Decimal).")
+    elif op == "8":
+        if rol != 'admin':
+            print("[!] No autorizado: se requiere cuenta admin para esta acción.")
+            continue
+        nombre_piloto = input("Nombre del piloto: ")
+        nombre_circuito = input("Nombre del circuito(Akina, Akagi, Myogi, Irohazaka, Paluato): ")
+        try:
+            nuevo_tiempo = float(input("Nuevo tiempo: "))
+            sistema.modificar_registro(nombre_piloto, nombre_circuito, nuevo_tiempo)
+        except ValueError:
+            print("Tiempo inválido. Debe ser un número(Decimal).")
+    elif op == "9":
+        print(" GUARDANDO DATOS EN JSON")
+        try:
+            gestor.guardar_circuitos(sistema.get_circuitos())
+            gestor.guardar_equipos(sistema.get_equipos())
+            gestor.guardar_pilotos(sistema.get_pilotos())
+            
+            todos_registros = []
+            for piloto in sistema.get_pilotos():
+                todos_registros.extend(piloto.get_registros())
+            if todos_registros:
+                gestor.guardar_registros(todos_registros)
+            
+            print("Todos los datos han sido guardados exitosamente.\n")
+        except Exception as e:
+            print(f"Error al guardar: {e}\n")
+    
+    elif op == "10":
+        print("\n[CARGANDO DATOS DESDE JSON...]")
+        try:
+            sistema.cargar_desde_json(gestor)
+            print("Datos cargados exitosamente.\n")
+        except Exception as e:
+            print(f"Error al cargar: {e}")
+    
+    elif op == "11":
+        print("\n--- ARCHIVOS JSON DISPONIBLES ---")
+        archivos = ["circuitos.json", "equipos.json", "pilotos.json", "registros.json"]
+        for i, archivo in enumerate(archivos, 1):
+            print(f"{i}. {archivo}")
+        seleccion = input("Seleccione archivo para ver (0 para cancelar): ")
+        
+        if seleccion == "0":
+            continue
+        elif seleccion in ['1', '2', '3', '4']:
+            gestor.ver_contenido_json(archivos[int(seleccion)-1])
+        else:
+            print("Opción inválida.\n")
+    
+    elif op == "12":
+        print("Saliendo...")
+        break
+    else:
+        print("Opción inválida")

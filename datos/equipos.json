@@ -1,0 +1,19 @@
+[
+    {
+        "nombre": "Speed Stars",
+        "pilotos": [
+            "Takumi",
+            "Diomedes Diaz",
+            "Martin Elias",
+            "Juan"
+        ]
+    },
+    {
+        "nombre": "Mountain Racers",
+        "pilotos": [
+            "Ryosuke",
+            "Silvestre Dangond",
+            "Poncho Zuleta"
+        ]
+    }
+]
