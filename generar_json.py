@@ -1,4 +1,3 @@
-# Script de prueba para generar archivos JSON
 from Sistema import Sistema
 from Datos_Json import GestorJSON
 
