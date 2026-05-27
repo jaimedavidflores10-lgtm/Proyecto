@@ -56,12 +56,6 @@ def mostrar_banner():
     print("=" * 60)
 
 
-def mostrar_resumen():
-    print(f"Pilotos: {len(sistema.get_pilotos())}")
-    print(f"Equipos: {len(sistema.get_equipos())}")
-    print(f"Circuitos: {len(sistema.get_circuitos())}")
-
-
 def guardar_datos():
     gestor.guardar_circuitos(sistema.get_circuitos())
     gestor.guardar_equipos(sistema.get_equipos())
@@ -119,15 +113,13 @@ def menu_usuario():
     while True:
         limpiar_pantalla()
         mostrar_banner()
-        mostrar_resumen()
         print("\n--- MENÚ USUARIO ---")
         print("1. Mostrar pilotos")
         print("2. Buscar piloto")
         print("3. Mostrar circuitos")
         print("4. Mejor piloto")
         print("5. Mostrar equipos")
-        print("6. Ver resumen")
-        print("7. Salir")
+        print("6. Salir")
 
         op = pedir_texto("Seleccione: ")
         if op == "1":
@@ -147,9 +139,6 @@ def menu_usuario():
             sistema.mostrar_equipos()
             pausar()
         elif op == "6":
-            mostrar_resumen()
-            pausar()
-        elif op == "7":
             print("Saliendo...")
             break
         else:
@@ -161,18 +150,25 @@ def menu_admin():
     while True:
         limpiar_pantalla()
         mostrar_banner()
-        mostrar_resumen()
         print("\n--- MENÚ ADMIN ---")
         print("1. Mostrar pilotos")
         print("2. Buscar piloto")
         print("3. Mostrar circuitos")
         print("4. Agregar piloto")
-        print("5. Mejor piloto")
-        print("6. Mostrar equipos")
-        print("7. Registrar tiempo Nuevo (Carrera)")
-        print("8. Modificar tiempo existente")
-        print("9. Guardar datos")
-        print("10. Guardar y salir")
+        print("5. Crear equipo")
+        print("6. Crear circuito")
+        print("7. Modificar equipo")
+        print("8. Modificar circuito")
+        print("9. Eliminar piloto")
+        print("10. Eliminar equipo")
+        print("11. Eliminar circuito")
+        print("12. Eliminar tiempo de un piloto")
+        print("13. Eliminar todos los tiempos de un piloto")
+        print("14. Mejor piloto")
+        print("15. Mostrar equipos")
+        print("16. Registrar tiempo Nuevo (Carrera)")
+        print("17. Modificar tiempo existente")
+        print("18. Guardar y salir")
 
         op = pedir_texto("Seleccione: ")
         if op == "1":
@@ -194,31 +190,65 @@ def menu_admin():
             sistema.agregar_piloto(nombre, edad, cedula, nombre_equipo)
             pausar()
         elif op == "5":
-            sistema.mejor_piloto()
+            nombre_equipo = pedir_texto("Nombre del nuevo equipo: ")
+            sistema.agregar_equipo(nombre_equipo)
             pausar()
         elif op == "6":
-            sistema.mostrar_equipos()
+            nombre_circuito = pedir_texto("Nombre del nuevo circuito: ")
+            tipo_circuito = pedir_texto("Tipo del circuito: ")
+            sistema.agregar_circuito(nombre_circuito, tipo_circuito)
             pausar()
         elif op == "7":
+            nombre_actual = pedir_texto("Nombre actual del equipo: ")
+            nuevo_nombre = pedir_texto("Nuevo nombre del equipo: ")
+            sistema.modificar_equipo(nombre_actual, nuevo_nombre)
+            pausar()
+        elif op == "8":
+            nombre_actual = pedir_texto("Nombre actual del circuito: ")
+            nuevo_nombre = pedir_texto("Nuevo nombre del circuito (Enter para mantener): ", permitir_vacio=True)
+            nuevo_tipo = pedir_texto("Nuevo tipo del circuito (Enter para mantener): ", permitir_vacio=True)
+            sistema.modificar_circuito(nombre_actual, nuevo_nombre, nuevo_tipo)
+            pausar()
+        elif op == "9":
+            nombre_piloto = pedir_texto("Nombre del piloto a eliminar: ")
+            sistema.eliminar_piloto(nombre_piloto)
+            pausar()
+        elif op == "10":
+            nombre_equipo = pedir_texto("Nombre del equipo a eliminar: ")
+            sistema.eliminar_equipo(nombre_equipo)
+            pausar()
+        elif op == "11":
+            nombre_circuito = pedir_texto("Nombre del circuito a eliminar: ")
+            sistema.eliminar_circuito(nombre_circuito)
+            pausar()
+        elif op == "12":
+            nombre_piloto = pedir_texto("Nombre del piloto: ")
+            nombre_circuito = pedir_texto("Nombre del circuito: ")
+            sistema.eliminar_tiempo_piloto(nombre_piloto, nombre_circuito)
+            pausar()
+        elif op == "13":
+            nombre_piloto = pedir_texto("Nombre del piloto: ")
+            sistema.eliminar_todos_tiempos_piloto(nombre_piloto)
+            pausar()
+        elif op == "14":
+            sistema.mejor_piloto()
+            pausar()
+        elif op == "15":
+            sistema.mostrar_equipos()
+            pausar()
+        elif op == "16":
             nombre_piloto = pedir_texto("Nombre del piloto: ")
             nombre_circuito = pedir_texto("Nombre del circuito (Akina, Akagi, Myogi, Irohazaka, Paluato): ")
             nuevo_tiempo = pedir_decimal("Nuevo tiempo: ", minimo=0)
             sistema.registrar_nuevo_tiempo(nombre_piloto, nombre_circuito, nuevo_tiempo)
             pausar()
-        elif op == "8":
+        elif op == "17":
             nombre_piloto = pedir_texto("Nombre del piloto: ")
             nombre_circuito = pedir_texto("Nombre del circuito (Akina, Akagi, Myogi, Irohazaka, Paluato): ")
             nuevo_tiempo = pedir_decimal("Nuevo tiempo: ", minimo=0)
             sistema.modificar_registro(nombre_piloto, nombre_circuito, nuevo_tiempo)
             pausar()
-        elif op == "9":
-            try:
-                guardar_datos()
-                print("Datos guardados correctamente.")
-            except Exception as e:
-                print(f"Error al guardar: {e}")
-            pausar()
-        elif op == "10":
+        elif op == "18":
             try:
                 guardar_datos()
                 print("Datos guardados. Saliendo...")

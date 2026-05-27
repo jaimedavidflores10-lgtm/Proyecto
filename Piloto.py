@@ -27,7 +27,8 @@ class Piloto:
         print(f"Nombre: {self.__nombre}")
         print(f"Edad: {self.__edad}")
         print(f"Cédula: {self.__cedula}")
-        print(f"Equipo: {self.__equipo.get_nombre()}")
+        equipo = self.__equipo.get_nombre() if self.__equipo else "Sin equipo"
+        print(f"Equipo: {equipo}")
         print("Registros:")
         for r in self.__registros:
             print(f"  Circuito: {r.get_circuito().get_nombre()} - Tiempo: {r.get_tiempo()}")

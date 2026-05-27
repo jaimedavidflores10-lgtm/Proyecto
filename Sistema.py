@@ -87,6 +87,217 @@ class Sistema:
         for c in self.__circuitos:
             c.mostrar()
 
+    def agregar_equipo(self, nombre_equipo):
+        nombre_equipo = nombre_equipo.strip()
+        if not nombre_equipo:
+            print("\n[!] Error: El nombre del equipo no puede estar vacío.")
+            return
+
+        for equipo in self.__equipos:
+            if equipo.get_nombre().strip().lower() == nombre_equipo.lower():
+                print(f"\n[!] Error: El equipo '{nombre_equipo}' ya existe.")
+                return
+
+        nuevo_equipo = Equipo(nombre_equipo)
+        self.__equipos.append(nuevo_equipo)
+        print(f"\n[OK] Equipo '{nombre_equipo}' creado correctamente.")
+
+    def agregar_circuito(self, nombre_circuito, tipo):
+        nombre_circuito = nombre_circuito.strip()
+        tipo = tipo.strip()
+
+        if not nombre_circuito:
+            print("\n[!] Error: El nombre del circuito no puede estar vacío.")
+            return
+        if not tipo:
+            print("\n[!] Error: El tipo de circuito no puede estar vacío.")
+            return
+
+        for circuito in self.__circuitos:
+            if circuito.get_nombre().strip().lower() == nombre_circuito.lower():
+                print(f"\n[!] Error: El circuito '{nombre_circuito}' ya existe.")
+                return
+
+        nuevo_circuito = Circuito(nombre_circuito, tipo)
+        self.__circuitos.append(nuevo_circuito)
+        print(f"\n[OK] Circuito '{nombre_circuito}' creado correctamente.")
+
+    def modificar_equipo(self, nombre_actual, nuevo_nombre):
+        nombre_actual = nombre_actual.strip()
+        nuevo_nombre = nuevo_nombre.strip()
+
+        if not nombre_actual or not nuevo_nombre:
+            print("\n[!] Error: Los nombres del equipo no pueden estar vacíos.")
+            return
+
+        equipo_objetivo = None
+        for equipo in self.__equipos:
+            if equipo.get_nombre().strip().lower() == nombre_actual.lower():
+                equipo_objetivo = equipo
+                break
+
+        if not equipo_objetivo:
+            print(f"\n[!] Error: El equipo '{nombre_actual}' no existe.")
+            return
+
+        for equipo in self.__equipos:
+            if equipo.get_nombre().strip().lower() == nuevo_nombre.lower() and equipo is not equipo_objetivo:
+                print(f"\n[!] Error: Ya existe otro equipo con el nombre '{nuevo_nombre}'.")
+                return
+
+        equipo_objetivo.set_nombre(nuevo_nombre)
+        print(f"\n[OK] Equipo actualizado: '{nombre_actual}' -> '{nuevo_nombre}'.")
+
+    def modificar_circuito(self, nombre_actual, nuevo_nombre=None, nuevo_tipo=None):
+        nombre_actual = nombre_actual.strip()
+        nuevo_nombre = (nuevo_nombre or "").strip()
+        nuevo_tipo = (nuevo_tipo or "").strip()
+
+        if not nombre_actual:
+            print("\n[!] Error: El nombre actual del circuito no puede estar vacío.")
+            return
+
+        circuito_objetivo = None
+        for circuito in self.__circuitos:
+            if circuito.get_nombre().strip().lower() == nombre_actual.lower():
+                circuito_objetivo = circuito
+                break
+
+        if not circuito_objetivo:
+            print(f"\n[!] Error: El circuito '{nombre_actual}' no existe.")
+            return
+
+        if nuevo_nombre:
+            for circuito in self.__circuitos:
+                if circuito.get_nombre().strip().lower() == nuevo_nombre.lower() and circuito is not circuito_objetivo:
+                    print(f"\n[!] Error: Ya existe otro circuito con el nombre '{nuevo_nombre}'.")
+                    return
+            circuito_objetivo.set_nombre(nuevo_nombre)
+
+        if nuevo_tipo:
+            circuito_objetivo.set_tipo(nuevo_tipo)
+
+        print(f"\n[OK] Circuito '{nombre_actual}' actualizado correctamente.")
+
+    def eliminar_piloto(self, nombre_piloto):
+        nombre_piloto = nombre_piloto.strip()
+        if not nombre_piloto:
+            print("\n[!] Error: El nombre del piloto no puede estar vacío.")
+            return
+
+        piloto_objetivo = None
+        for piloto in self.__pilotos:
+            if piloto.get_nombre().strip().lower() == nombre_piloto.lower():
+                piloto_objetivo = piloto
+                break
+
+        if not piloto_objetivo:
+            print(f"\n[!] Error: El piloto '{nombre_piloto}' no existe.")
+            return
+
+        equipo = piloto_objetivo.get_equipo()
+        if equipo and piloto_objetivo in equipo.get_pilotos():
+            equipo.get_pilotos().remove(piloto_objetivo)
+
+        self.__pilotos.remove(piloto_objetivo)
+        print(f"\n[OK] Piloto '{nombre_piloto}' eliminado correctamente.")
+
+    def eliminar_equipo(self, nombre_equipo):
+        nombre_equipo = nombre_equipo.strip()
+        if not nombre_equipo:
+            print("\n[!] Error: El nombre del equipo no puede estar vacío.")
+            return
+
+        equipo_objetivo = None
+        for equipo in self.__equipos:
+            if equipo.get_nombre().strip().lower() == nombre_equipo.lower():
+                equipo_objetivo = equipo
+                break
+
+        if not equipo_objetivo:
+            print(f"\n[!] Error: El equipo '{nombre_equipo}' no existe.")
+            return
+
+        for piloto in self.__pilotos:
+            if piloto.get_equipo() == equipo_objetivo:
+                piloto.set_equipo(None)
+
+        self.__equipos.remove(equipo_objetivo)
+        print(f"\n[OK] Equipo '{nombre_equipo}' eliminado correctamente.")
+
+    def eliminar_circuito(self, nombre_circuito):
+        nombre_circuito = nombre_circuito.strip()
+        if not nombre_circuito:
+            print("\n[!] Error: El nombre del circuito no puede estar vacío.")
+            return
+
+        circuito_objetivo = None
+        for circuito in self.__circuitos:
+            if circuito.get_nombre().strip().lower() == nombre_circuito.lower():
+                circuito_objetivo = circuito
+                break
+
+        if not circuito_objetivo:
+            print(f"\n[!] Error: El circuito '{nombre_circuito}' no existe.")
+            return
+
+        for piloto in self.__pilotos:
+            piloto.get_registros()[:] = [
+                registro for registro in piloto.get_registros()
+                if registro.get_circuito() != circuito_objetivo
+            ]
+
+        self.__circuitos.remove(circuito_objetivo)
+        print(f"\n[OK] Circuito '{nombre_circuito}' eliminado correctamente.")
+
+    def eliminar_tiempo_piloto(self, nombre_piloto, nombre_circuito):
+        nombre_piloto = nombre_piloto.strip()
+        nombre_circuito = nombre_circuito.strip()
+
+        if not nombre_piloto or not nombre_circuito:
+            print("\n[!] Error: El nombre del piloto y del circuito no pueden estar vacíos.")
+            return
+
+        piloto_objetivo = None
+        for piloto in self.__pilotos:
+            if piloto.get_nombre().strip().lower() == nombre_piloto.lower():
+                piloto_objetivo = piloto
+                break
+
+        if not piloto_objetivo:
+            print(f"\n[!] Error: El piloto '{nombre_piloto}' no existe.")
+            return
+
+        registros = piloto_objetivo.get_registros()
+        for registro in list(registros):
+            if registro.get_circuito().get_nombre().strip().lower() == nombre_circuito.lower():
+                registros.remove(registro)
+                print(f"\n[OK] Tiempo eliminado para {nombre_piloto} en {nombre_circuito}.")
+                return
+
+        print("\n[!] Error: No se encontró un tiempo para esa combinación.")
+
+    def eliminar_todos_tiempos_piloto(self, nombre_piloto):
+        nombre_piloto = nombre_piloto.strip()
+
+        if not nombre_piloto:
+            print("\n[!] Error: El nombre del piloto no puede estar vacío.")
+            return
+
+        piloto_objetivo = None
+        for piloto in self.__pilotos:
+            if piloto.get_nombre().strip().lower() == nombre_piloto.lower():
+                piloto_objetivo = piloto
+                break
+
+        if not piloto_objetivo:
+            print(f"\n[!] Error: El piloto '{nombre_piloto}' no existe.")
+            return
+
+        cantidad = len(piloto_objetivo.get_registros())
+        piloto_objetivo.get_registros().clear()
+        print(f"\n[OK] Se eliminaron {cantidad} tiempo(s) del piloto '{nombre_piloto}'.")
+
     def agregar_piloto(self, nombre, edad, cedula, nombre_equipo):
         nombre = nombre.strip()
         cedula = cedula.strip()

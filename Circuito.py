@@ -8,6 +8,8 @@ class Circuito:
         return self.__nombre
     def get_tipo(self):
         return self.__tipo
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
     def set_tipo(self, tipo):
         self.__tipo = tipo
 
