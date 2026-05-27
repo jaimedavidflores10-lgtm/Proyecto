@@ -57,21 +57,18 @@ def iniciar_sesion():
 
 rol = iniciar_sesion()
 
-try:
+
+def menu_usuario():
     while True:
-        print("\n--- MENU ---")
+        print("\n--- MENÚ USUARIO ---")
         print("1. Mostrar pilotos")
         print("2. Buscar piloto")
         print("3. Mostrar circuitos")
-        print("4. Agregar piloto")
-        print("5. Mejor piloto")
-        print("6. Mostrar equipos")
-        print("7. Registrar tiempo Nuevo (Carrera)")
-        print("8. Modificar tiempo existente")
-        print("9. Salir")
+        print("4. Mejor piloto")
+        print("5. Mostrar equipos")
+        print("6. Salir")
 
         op = input("Seleccione: ")
-
         if op == "1":
             sistema.mostrar_pilotos()
         elif op == "2":
@@ -80,12 +77,45 @@ try:
         elif op == "3":
             sistema.mostrar_circuitos()
         elif op == "4":
-            if rol != 'admin':
-                print("[!] No autorizado: se requiere cuenta admin para esta acción.")
-                continue
+            sistema.mejor_piloto()
+        elif op == "5":
+            sistema.mostrar_equipos()
+        elif op == "6":
+            print("Saliendo...")
+            break
+        else:
+            print("Opción inválida")
+
+
+def menu_admin():
+    while True:
+        print("\n--- MENÚ ADMIN ---")
+        print("1. Mostrar pilotos")
+        print("2. Buscar piloto")
+        print("3. Mostrar circuitos")
+        print("4. Agregar piloto")
+        print("5. Mejor piloto")
+        print("6. Mostrar equipos")
+        print("7. Registrar tiempo Nuevo (Carrera)")
+        print("8. Modificar tiempo existente")
+        print("9. Guardar y salir")
+
+        op = input("Seleccione: ")
+        if op == "1":
+            sistema.mostrar_pilotos()
+        elif op == "2":
+            nombre = input("Nombre: ")
+            sistema.buscar_piloto(nombre)
+        elif op == "3":
+            sistema.mostrar_circuitos()
+        elif op == "4":
             nombre = input("Nombre: ")
             cedula = input("Cédula: ")
-            edad = int(input("Edad: Mayor o igual a 18: "))
+            try:
+                edad = int(input("Edad: Mayor o igual a 18: "))
+            except ValueError:
+                print("Edad inválida.")
+                continue
             print("Equipos disponibles: Speed Stars, Mountain Racers")
             nombre_equipo = input("Equipo: ")
             sistema.agregar_piloto(nombre, edad, cedula, nombre_equipo)
@@ -94,9 +124,6 @@ try:
         elif op == "6":
             sistema.mostrar_equipos()
         elif op == "7":
-            if rol != 'admin':
-                print("[!] No autorizado: se requiere cuenta admin para esta acción.")
-                continue
             nombre_piloto = input("Nombre del piloto: ")
             nombre_circuito = input("Nombre del circuito(Akina, Akagi, Myogi, Irohazaka, Paluato): ")
             try:
@@ -105,9 +132,6 @@ try:
             except ValueError:
                 print("Tiempo inválido. Debe ser un número(Decimal).")
         elif op == "8":
-            if rol != 'admin':
-                print("[!] No autorizado: se requiere cuenta admin para esta acción.")
-                continue
             nombre_piloto = input("Nombre del piloto: ")
             nombre_circuito = input("Nombre del circuito(Akina, Akagi, Myogi, Irohazaka, Paluato): ")
             try:
@@ -116,10 +140,21 @@ try:
             except ValueError:
                 print("Tiempo inválido. Debe ser un número(Decimal).")
         elif op == "9":
-            print("Saliendo...")
+            try:
+                guardar_datos()
+                print("Datos guardados. Saliendo...")
+            except Exception as e:
+                print(f"Error al guardar: {e}")
             break
         else:
             print("Opción inválida")
+
+
+try:
+    if rol == 'admin':
+        menu_admin()
+    else:
+        menu_usuario()
 finally:
     try:
         guardar_datos()
