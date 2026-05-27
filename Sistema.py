@@ -364,14 +364,31 @@ class Sistema:
             print(f"\n[!] Error: El equipo '{nombre_equipo}' no existe.")
 
     def modificar_registro(self, nombre_piloto, nombre_circuito, nuevo_tiempo):
+        nombre_p = nombre_piloto.strip()
+        nombre_c = nombre_circuito.strip()
         for p in self.__pilotos:
-            if p.get_nombre().lower() == nombre_piloto.strip().lower():
+            if p.get_nombre().lower() == nombre_p.lower():
+                # buscar registro existente
                 for reg in p.get_registros():
-                    if reg.get_circuito().get_nombre().lower() == nombre_circuito.strip().lower():
+                    if reg.get_circuito().get_nombre().strip().lower() == nombre_c.lower():
                         reg.set_tiempo(nuevo_tiempo)
                         print(f"\n[OK] Tiempo actualizado para {p.get_nombre()} en {reg.get_circuito().get_nombre()}.")
                         return
-        print("\n[!] Error: No se encontró un registro previo para esa combinación.")
+                
+                circuito_obj = None
+                for c in self.__circuitos:
+                    if c.get_nombre().strip().lower() == nombre_c.lower():
+                        circuito_obj = c
+                        break
+                if circuito_obj:
+                    nuevo_reg = Registro(p, circuito_obj, nuevo_tiempo)
+                    p.agregar_registro(nuevo_reg)
+                    print(f"\n[OK] Registro creado para {p.get_nombre()} en {circuito_obj.get_nombre()} con tiempo {nuevo_tiempo}.")
+                    return
+                else:
+                    print(f"\n[!] Error: El circuito '{nombre_circuito}' no existe.")
+                    return
+        print(f"\n[!] Error: El piloto '{nombre_piloto}' no existe.")
 
     def mejor_piloto(self):
         mejor = None
@@ -406,7 +423,6 @@ class Sistema:
         else:
             print("\n[!] Error: No se encontró el piloto o el circuito.")
     
-    # Getters para JSON
     def get_pilotos(self):
         return self.__pilotos
     

@@ -11,11 +11,15 @@ class GestorJSON:
     
     def __init__(self, carpeta_datos="datos"):
         
+        base_dir = os.path.dirname(__file__)
+        if not os.path.isabs(carpeta_datos):
+            carpeta_datos = os.path.join(base_dir, carpeta_datos)
+
         self.carpeta_datos = carpeta_datos
+
         
-        # Crear carpeta si no existe
-        if not os.path.exists(carpeta_datos):
-            os.makedirs(carpeta_datos)
+        if not os.path.exists(self.carpeta_datos):
+            os.makedirs(self.carpeta_datos)
     
     def guardar_circuitos(self, circuitos, nombre_archivo="circuitos.json"):
         

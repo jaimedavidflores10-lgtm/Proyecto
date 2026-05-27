@@ -7,23 +7,23 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.53
+                "tiempo": 4.56
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.77
+                "tiempo": 4.55
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.26
+                "tiempo": 4.03
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.64
+                "tiempo": 4.69
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.06
+                "tiempo": 4.07
             }
         ]
     },
@@ -35,23 +35,23 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.73
+                "tiempo": 4.81
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.55
+                "tiempo": 4.91
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.49
+                "tiempo": 4.93
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.52
+                "tiempo": 4.28
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.71
+                "tiempo": 4.16
             }
         ]
     },
@@ -63,23 +63,23 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.06
+                "tiempo": 4.37
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.87
+                "tiempo": 4.63
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.68
+                "tiempo": 4.75
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.15
+                "tiempo": 4.81
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.14
+                "tiempo": 4.5
             }
         ]
     },
@@ -91,23 +91,23 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.85
+                "tiempo": 4.25
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.87
+                "tiempo": 4.23
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.28
+                "tiempo": 4.23
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.27
+                "tiempo": 4.75
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.19
+                "tiempo": 4.7
             }
         ]
     },
@@ -119,23 +119,23 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.09
+                "tiempo": 4.86
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.8
+                "tiempo": 4.87
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.83
+                "tiempo": 4.58
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.32
+                "tiempo": 4.39
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.02
+                "tiempo": 4.2
             }
         ]
     },
@@ -147,31 +147,48 @@
         "registros": [
             {
                 "circuito": "Akina",
-                "tiempo": 4.33
+                "tiempo": 4.59
             },
             {
                 "circuito": "Akagi",
-                "tiempo": 4.67
+                "tiempo": 4.28
             },
             {
                 "circuito": "Myogi",
-                "tiempo": 4.2
+                "tiempo": 4.43
             },
             {
                 "circuito": "Irohazaka",
-                "tiempo": 4.36
+                "tiempo": 4.7
             },
             {
                 "circuito": "Paluato",
-                "tiempo": 4.03
+                "tiempo": 4.54
             }
         ]
     },
     {
         "nombre": "Juan",
-        "edad": 18,
-        "cedula": "1145269898",
+        "edad": 20,
+        "cedula": "1125446",
         "equipo": "Speed Stars",
-        "registros": []
+        "registros": [
+            {
+                "circuito": "Akagi",
+                "tiempo": 3.1
+            },
+            {
+                "circuito": "Akina",
+                "tiempo": 2.2
+            },
+            {
+                "circuito": "Akina",
+                "tiempo": 2.95
+            },
+            {
+                "circuito": "Akina",
+                "tiempo": 2.5
+            }
+        ]
     }
 ]

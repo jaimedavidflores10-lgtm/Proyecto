@@ -2,151 +2,166 @@
     {
         "piloto": "Takumi",
         "circuito": "Akina",
-        "tiempo": 4.53
+        "tiempo": 4.56
     },
     {
         "piloto": "Takumi",
-        "circuito": "Akagi",
-        "tiempo": 4.77
-    },
-    {
-        "piloto": "Takumi",
-        "circuito": "Myogi",
-        "tiempo": 4.26
-    },
-    {
-        "piloto": "Takumi",
-        "circuito": "Irohazaka",
-        "tiempo": 4.64
-    },
-    {
-        "piloto": "Takumi",
-        "circuito": "Paluato",
-        "tiempo": 4.06
-    },
-    {
-        "piloto": "Ryosuke",
-        "circuito": "Akina",
-        "tiempo": 4.73
-    },
-    {
-        "piloto": "Ryosuke",
         "circuito": "Akagi",
         "tiempo": 4.55
     },
     {
+        "piloto": "Takumi",
+        "circuito": "Myogi",
+        "tiempo": 4.03
+    },
+    {
+        "piloto": "Takumi",
+        "circuito": "Irohazaka",
+        "tiempo": 4.69
+    },
+    {
+        "piloto": "Takumi",
+        "circuito": "Paluato",
+        "tiempo": 4.07
+    },
+    {
+        "piloto": "Ryosuke",
+        "circuito": "Akina",
+        "tiempo": 4.81
+    },
+    {
+        "piloto": "Ryosuke",
+        "circuito": "Akagi",
+        "tiempo": 4.91
+    },
+    {
         "piloto": "Ryosuke",
         "circuito": "Myogi",
-        "tiempo": 4.49
+        "tiempo": 4.93
     },
     {
         "piloto": "Ryosuke",
         "circuito": "Irohazaka",
-        "tiempo": 4.52
-    },
-    {
-        "piloto": "Ryosuke",
-        "circuito": "Paluato",
-        "tiempo": 4.71
-    },
-    {
-        "piloto": "Diomedes Diaz",
-        "circuito": "Akina",
-        "tiempo": 4.06
-    },
-    {
-        "piloto": "Diomedes Diaz",
-        "circuito": "Akagi",
-        "tiempo": 4.87
-    },
-    {
-        "piloto": "Diomedes Diaz",
-        "circuito": "Myogi",
-        "tiempo": 4.68
-    },
-    {
-        "piloto": "Diomedes Diaz",
-        "circuito": "Irohazaka",
-        "tiempo": 4.15
-    },
-    {
-        "piloto": "Diomedes Diaz",
-        "circuito": "Paluato",
-        "tiempo": 4.14
-    },
-    {
-        "piloto": "Silvestre Dangond",
-        "circuito": "Akina",
-        "tiempo": 4.85
-    },
-    {
-        "piloto": "Silvestre Dangond",
-        "circuito": "Akagi",
-        "tiempo": 4.87
-    },
-    {
-        "piloto": "Silvestre Dangond",
-        "circuito": "Myogi",
         "tiempo": 4.28
     },
     {
+        "piloto": "Ryosuke",
+        "circuito": "Paluato",
+        "tiempo": 4.16
+    },
+    {
+        "piloto": "Diomedes Diaz",
+        "circuito": "Akina",
+        "tiempo": 4.37
+    },
+    {
+        "piloto": "Diomedes Diaz",
+        "circuito": "Akagi",
+        "tiempo": 4.63
+    },
+    {
+        "piloto": "Diomedes Diaz",
+        "circuito": "Myogi",
+        "tiempo": 4.75
+    },
+    {
+        "piloto": "Diomedes Diaz",
+        "circuito": "Irohazaka",
+        "tiempo": 4.81
+    },
+    {
+        "piloto": "Diomedes Diaz",
+        "circuito": "Paluato",
+        "tiempo": 4.5
+    },
+    {
+        "piloto": "Silvestre Dangond",
+        "circuito": "Akina",
+        "tiempo": 4.25
+    },
+    {
+        "piloto": "Silvestre Dangond",
+        "circuito": "Akagi",
+        "tiempo": 4.23
+    },
+    {
+        "piloto": "Silvestre Dangond",
+        "circuito": "Myogi",
+        "tiempo": 4.23
+    },
+    {
         "piloto": "Silvestre Dangond",
         "circuito": "Irohazaka",
-        "tiempo": 4.27
+        "tiempo": 4.75
     },
     {
         "piloto": "Silvestre Dangond",
         "circuito": "Paluato",
-        "tiempo": 4.19
+        "tiempo": 4.7
     },
     {
         "piloto": "Martin Elias",
         "circuito": "Akina",
-        "tiempo": 4.09
+        "tiempo": 4.86
     },
     {
         "piloto": "Martin Elias",
         "circuito": "Akagi",
-        "tiempo": 4.8
+        "tiempo": 4.87
     },
     {
         "piloto": "Martin Elias",
         "circuito": "Myogi",
-        "tiempo": 4.83
+        "tiempo": 4.58
     },
     {
         "piloto": "Martin Elias",
         "circuito": "Irohazaka",
-        "tiempo": 4.32
+        "tiempo": 4.39
     },
     {
         "piloto": "Martin Elias",
         "circuito": "Paluato",
-        "tiempo": 4.02
-    },
-    {
-        "piloto": "Poncho Zuleta",
-        "circuito": "Akina",
-        "tiempo": 4.33
-    },
-    {
-        "piloto": "Poncho Zuleta",
-        "circuito": "Akagi",
-        "tiempo": 4.67
-    },
-    {
-        "piloto": "Poncho Zuleta",
-        "circuito": "Myogi",
         "tiempo": 4.2
     },
     {
         "piloto": "Poncho Zuleta",
+        "circuito": "Akina",
+        "tiempo": 4.59
+    },
+    {
+        "piloto": "Poncho Zuleta",
+        "circuito": "Akagi",
+        "tiempo": 4.28
+    },
+    {
+        "piloto": "Poncho Zuleta",
+        "circuito": "Myogi",
+        "tiempo": 4.43
+    },
+    {
+        "piloto": "Poncho Zuleta",
         "circuito": "Irohazaka",
-        "tiempo": 4.36
+        "tiempo": 4.7
     },
     {
         "piloto": "Poncho Zuleta",
         "circuito": "Paluato",
-        "tiempo": 4.03
+        "tiempo": 4.54
+    },
+    {
+        "piloto": "Juan",
+        "circuito": "Akagi",
+        "tiempo": 3.1
+    },
+    {
+        "piloto": "Juan",
+        "circuito": "Akina",
+        "tiempo": 2.2
+    },
+    {
+        "piloto": "Juan",
+        "circuito": "Akina",
+        "tiempo": 2.95
     }
 ]
