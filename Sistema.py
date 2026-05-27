@@ -72,8 +72,19 @@ class Sistema:
                 r = Registro(piloto, circuito, tiempo)
                 piloto.agregar_registro(r)
 
-    def mostrar_pilotos(self):
-        for p in self.__pilotos:
+    def mostrar_pilotos(self, ordenar_por='nombre'):
+        """
+        Mostrar pilotos ordenados por 'nombre' o por 'mejor_tiempo'.
+        """
+        if ordenar_por == 'mejor_tiempo':
+            def key_fn(p):
+                mejor = p.get_mejor_tiempo()
+                return float('inf') if mejor is None else mejor
+        else:
+            def key_fn(p):
+                return p.get_nombre().lower()
+
+        for p in sorted(self.__pilotos, key=key_fn):
             p.mostrar_info()
 
     def buscar_piloto(self, nombre):
@@ -111,6 +122,12 @@ class Sistema:
             return
         if not tipo:
             print("\n[!] Error: El tipo de circuito no puede estar vacío.")
+            return
+
+        
+        tokens = [t for t in nombre_circuito.split() if t]
+        if not tokens or not all(t.isalpha() for t in tokens):
+            print("\n[!] Error: El nombre del circuito solo puede contener palabras (letras y espacios).")
             return
 
         for circuito in self.__circuitos:
@@ -168,6 +185,11 @@ class Sistema:
             return
 
         if nuevo_nombre:
+            
+            tokens = [t for t in nuevo_nombre.split() if t]
+            if not tokens or not all(t.isalpha() for t in tokens):
+                print("\n[!] Error: El nuevo nombre del circuito solo puede contener palabras (letras y espacios).")
+                return
             for circuito in self.__circuitos:
                 if circuito.get_nombre().strip().lower() == nuevo_nombre.lower() and circuito is not circuito_objetivo:
                     print(f"\n[!] Error: Ya existe otro circuito con el nombre '{nuevo_nombre}'.")
@@ -218,9 +240,11 @@ class Sistema:
             print(f"\n[!] Error: El equipo '{nombre_equipo}' no existe.")
             return
 
-        for piloto in self.__pilotos:
-            if piloto.get_equipo() == equipo_objetivo:
-                piloto.set_equipo(None)
+    
+        pilotos_referenciados = [p for p in self.__pilotos if p.get_equipo() == equipo_objetivo]
+        if pilotos_referenciados:
+            print(f"\n[!] Error: No se puede eliminar '{nombre_equipo}' porque {len(pilotos_referenciados)} piloto(s) están asignados a este equipo.")
+            return
 
         self.__equipos.remove(equipo_objetivo)
         print(f"\n[OK] Equipo '{nombre_equipo}' eliminado correctamente.")
@@ -240,12 +264,14 @@ class Sistema:
         if not circuito_objetivo:
             print(f"\n[!] Error: El circuito '{nombre_circuito}' no existe.")
             return
-
+        registros_referenciados = 0
         for piloto in self.__pilotos:
-            piloto.get_registros()[:] = [
-                registro for registro in piloto.get_registros()
-                if registro.get_circuito() != circuito_objetivo
-            ]
+            for registro in piloto.get_registros():
+                if registro.get_circuito() == circuito_objetivo:
+                    registros_referenciados += 1
+        if registros_referenciados > 0:
+            print(f"\n[!] Error: No se puede eliminar '{nombre_circuito}' porque existe(n) {registros_referenciados} registro(s) que lo referencian.")
+            return
 
         self.__circuitos.remove(circuito_objetivo)
         print(f"\n[OK] Circuito '{nombre_circuito}' eliminado correctamente.")
@@ -309,6 +335,10 @@ class Sistema:
             return
         if not cedula:
             print("\n[!] Error: La cédula no puede estar vacía.")
+            return
+       
+        if not cedula.isdigit():
+            print(f"\n[!] Error: La cédula '{cedula}' debe contener solo números.")
             return
         if any(p.get_cedula() == cedula for p in self.__pilotos):
             print(f"\n[!] Error: La cédula '{cedula}' ya está registrada.")

@@ -33,3 +33,9 @@ class Piloto:
         for r in self.__registros:
             print(f"  Circuito: {r.get_circuito().get_nombre()} - Tiempo: {r.get_tiempo()}")
         print("-" * 30)
+
+    def get_mejor_tiempo(self):
+        if not self.__registros:
+            return None
+        tiempos = [r.get_tiempo() for r in self.__registros if r.get_tiempo() is not None]
+        return min(tiempos) if tiempos else None

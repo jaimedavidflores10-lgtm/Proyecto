@@ -123,7 +123,12 @@ def menu_usuario():
 
         op = pedir_texto("Seleccione: ")
         if op == "1":
-            sistema.mostrar_pilotos()
+            print("\nOrdenar pilotos por: 1) Nombre 2) Mejor tiempo")
+            orden = pedir_texto("Seleccione: ")
+            if orden == "2":
+                sistema.mostrar_pilotos(ordenar_por='mejor_tiempo')
+            else:
+                sistema.mostrar_pilotos(ordenar_por='nombre')
             pausar()
         elif op == "2":
             nombre = pedir_texto("Nombre: ")
@@ -182,7 +187,12 @@ def menu_admin():
 
         op = pedir_texto("Seleccione: ")
         if op == "1":
-            sistema.mostrar_pilotos()
+            print("\nOrdenar pilotos por: 1) Nombre 2) Mejor tiempo")
+            orden = pedir_texto("Seleccione: ")
+            if orden == "2":
+                sistema.mostrar_pilotos(ordenar_por='mejor_tiempo')
+            else:
+                sistema.mostrar_pilotos(ordenar_por='nombre')
             pausar()
         elif op == "2":
             nombre = pedir_texto("Nombre: ")
