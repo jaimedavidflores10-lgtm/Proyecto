@@ -211,7 +211,8 @@ def menu_admin():
             nombre = pedir_texto("Nombre: ")
             cedula = pedir_texto("Cédula: ")
             edad = pedir_entero("Edad: Mayor o igual a 18: ", minimo=18)
-            print("Equipos disponibles: Speed Stars, Mountain Racers")
+            equipos_disp = ', '.join([e.get_nombre() for e in sistema.get_equipos()]) if sistema.get_equipos() else 'Ninguno'
+            print(f"Equipos disponibles: {equipos_disp}")
             nombre_equipo = pedir_texto("Equipo: ")
             sistema.agregar_piloto(nombre, edad, cedula, nombre_equipo)
             pausar()
@@ -249,13 +250,15 @@ def menu_admin():
             pausar()
         elif op == "14":
             nombre_piloto = pedir_texto("Nombre del piloto: ")
-            nombre_circuito = pedir_texto("Nombre del circuito (Akina, Akagi, Myogi, Irohazaka, Paluato): ")
+            circuitos_disp = ', '.join([c.get_nombre() for c in sistema.get_circuitos()]) if sistema.get_circuitos() else 'Ninguno'
+            nombre_circuito = pedir_texto(f"Nombre del circuito ({circuitos_disp}): ")
             nuevo_tiempo = pedir_decimal("Nuevo tiempo: ", minimo=0)
             sistema.registrar_nuevo_tiempo(nombre_piloto, nombre_circuito, nuevo_tiempo)
             pausar()
         elif op == "15":
             nombre_piloto = pedir_texto("Nombre del piloto: ")
-            nombre_circuito = pedir_texto("Nombre del circuito (Akina, Akagi, Myogi, Irohazaka, Paluato): ")
+            circuitos_disp = ', '.join([c.get_nombre() for c in sistema.get_circuitos()]) if sistema.get_circuitos() else 'Ninguno'
+            nombre_circuito = pedir_texto(f"Nombre del circuito ({circuitos_disp}): ")
             nuevo_tiempo = pedir_decimal("Nuevo tiempo: ", minimo=0)
             sistema.modificar_registro(nombre_piloto, nombre_circuito, nuevo_tiempo)
             pausar()

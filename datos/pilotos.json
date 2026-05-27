@@ -184,11 +184,14 @@
             {
                 "circuito": "Akina",
                 "tiempo": 2.95
-            },
-            {
-                "circuito": "Akina",
-                "tiempo": 2.5
             }
         ]
+    },
+    {
+        "nombre": "Yulian",
+        "edad": 19,
+        "cedula": "1152369",
+        "equipo": "Mountain Racers",
+        "registros": []
     }
 ]

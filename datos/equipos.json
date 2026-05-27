@@ -5,8 +5,7 @@
             "Takumi",
             "Diomedes Diaz",
             "Martin Elias",
-            "Juan",
-            "GuiSaveTest"
+            "Juan"
         ]
     },
     {
@@ -14,7 +13,12 @@
         "pilotos": [
             "Ryosuke",
             "Silvestre Dangond",
-            "Poncho Zuleta"
+            "Poncho Zuleta",
+            "Yulian"
         ]
+    },
+    {
+        "nombre": "Thirio Doom",
+        "pilotos": []
     }
 ]
