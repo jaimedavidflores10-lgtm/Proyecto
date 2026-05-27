@@ -19,6 +19,8 @@
     },
     {
         "nombre": "Thirio Doom",
-        "pilotos": []
+        "pilotos": [
+            "Yair"
+        ]
     }
 ]

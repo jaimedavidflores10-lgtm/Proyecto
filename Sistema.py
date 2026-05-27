@@ -368,7 +368,7 @@ class Sistema:
         nombre_c = nombre_circuito.strip()
         for p in self.__pilotos:
             if p.get_nombre().lower() == nombre_p.lower():
-                # buscar registro existente
+                
                 for reg in p.get_registros():
                     if reg.get_circuito().get_nombre().strip().lower() == nombre_c.lower():
                         reg.set_tiempo(nuevo_tiempo)

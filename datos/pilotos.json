@@ -193,5 +193,12 @@
         "cedula": "1152369",
         "equipo": "Mountain Racers",
         "registros": []
+    },
+    {
+        "nombre": "Yair",
+        "edad": 20,
+        "cedula": "122369944",
+        "equipo": "Thirio Doom",
+        "registros": []
     }
 ]
