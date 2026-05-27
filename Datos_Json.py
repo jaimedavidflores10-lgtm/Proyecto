@@ -31,7 +31,7 @@ class GestorJSON:
         with open(ruta, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4, ensure_ascii=False)
         
-        print(f"✓ {len(circuitos)} circuito(s) guardado(s) en {ruta}")
+        print(f"[OK] {len(circuitos)} circuito(s) guardado(s) en {ruta}")
     
     def cargar_circuitos(self, nombre_archivo="circuitos.json"):
         
@@ -71,14 +71,14 @@ class GestorJSON:
         with open(ruta, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4, ensure_ascii=False)
         
-        print(f"✓ {len(equipos)} equipo(s) guardado(s) en {ruta}")
+        print(f"[OK] {len(equipos)} equipo(s) guardado(s) en {ruta}")
     
     def cargar_equipos(self, nombre_archivo="equipos.json"):
         
         ruta = os.path.join(self.carpeta_datos, nombre_archivo)
         
         if not os.path.exists(ruta):
-            print(f"⚠ El archivo {ruta} no existe")
+            print(f"[!] El archivo {ruta} no existe")
             return []
         
         try:
@@ -90,11 +90,11 @@ class GestorJSON:
                 equipo = Equipo(item['nombre'])
                 equipos.append(equipo)
             
-            print(f"✓ {len(equipos)} equipo(s) cargado(s) desde {ruta}")
+            print(f"[OK] {len(equipos)} equipo(s) cargado(s) desde {ruta}")
             return equipos
         
         except Exception as e:
-            print(f"✗ Error al cargar equipos: {e}")
+            print(f"[ERROR] Error al cargar equipos: {e}")
             return []
     
     def guardar_pilotos(self, pilotos, nombre_archivo="pilotos.json"):
@@ -120,14 +120,14 @@ class GestorJSON:
         with open(ruta, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4, ensure_ascii=False)
         
-        print(f"✓ {len(pilotos)} piloto(s) guardado(s) en {ruta}")
+        print(f"[OK] {len(pilotos)} piloto(s) guardado(s) en {ruta}")
     
     def cargar_pilotos(self, equipos_dict=None, nombre_archivo="pilotos.json"):
 
         ruta = os.path.join(self.carpeta_datos, nombre_archivo)
         
         if not os.path.exists(ruta):
-            print(f"⚠ El archivo {ruta} no existe")
+            print(f"[!] El archivo {ruta} no existe")
             return []
         
         try:
@@ -166,7 +166,7 @@ class GestorJSON:
         with open(ruta, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4, ensure_ascii=False)
         
-        print(f"✓ {len(registros)} registro(s) guardado(s) en {ruta}")
+        print(f"[OK] {len(registros)} registro(s) guardado(s) en {ruta}")
     
     def cargar_registros(self, pilotos_dict=None, circuitos_dict=None, nombre_archivo="registros.json"):
         
